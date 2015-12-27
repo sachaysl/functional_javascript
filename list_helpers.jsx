@@ -134,11 +134,11 @@ var hd = function(list) {
 };
 
 //implement nth
-
+// implement parial evaluation version
 var nth = function(n, list) {
     
     function aux(n, list, acc) {
-	if(list.length == 0 ) { throw new Error("List has less than n") }
+	if(list.length == 0 ) { throw new Error("List has less than n items") }
 	var [h, ...t] = list;
 	if ( acc == n) { return h; }
 	else { return aux(n, t, acc + 1); }
@@ -146,7 +146,23 @@ var nth = function(n, list) {
     return aux(n, list, 0);
 };
 
-    
+var length = function(list) {
+
+    function aux(list, length) {
+	if(typeof list[0] == "undefined") { return length; }
+
+	else {
+	    var [h, ...t] = list;
+	    return aux(t, length + 1);
+	};
+    }
+
+    return aux(list, 0);
+};
+
+ 
+
+
 
 //implement rev
 
