@@ -19,4 +19,4 @@ var map = function (items, transform) {
     return aux (items, transform, acc);
 }
 
-//  map ([1,2,3], x => x + 1);;
+//  map ([1,2], x => x + 1);;
