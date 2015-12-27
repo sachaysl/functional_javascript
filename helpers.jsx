@@ -44,13 +44,29 @@ var map = function (transform, items) {
 // add_one([1,2,3]);
 
 var filter = function (pred, list) {
+    if (typeof list == "undefined") {
+	return function(list) { //partial
+	    var acc = [];
+	    if ( list.length == 0) { return []; }
+	    function aux (list, pred, acc) {
+		var [h, ...t] = list;
+		if (t.length == 0) {
+		    if (pred(h)) {acc.push(h);}
+		    return acc;
+		}
+		else {
+		    if (pred(h)) {acc.push(h);}
+		    return aux(t, pred, acc);
+		}
+	    }
+	    return aux (list, pred, acc);
+	};
+    }
+    // full
     var acc = [];
     if ( list.length == 0) { return []; }
-
     function aux (list, pred, acc) {
-
 	var [h, ...t] = list;
-
 	if (t.length == 0) {
 	    if (pred(h)) {acc.push(h);}
 	    return acc;
@@ -60,10 +76,12 @@ var filter = function (pred, list) {
 	    return aux(t, pred, acc);
 	}
     }
-
     return aux (list, pred, acc);
 };
-// filter([1,2,3,4,6], x => ( x % 2 == 0));	    
+    
+// filter(x => ( x % 2 == 0), [1,2,3,4,5,6]);
+// var evens = filter(x => ( x % 2 == 0));
+// evens([1,2,3,4,5,6]);
 
 
 //this reduce does not support partial functions
