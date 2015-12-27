@@ -120,11 +120,33 @@ var reduce = function (comb, acc, list) {
 //var concat = reduce ((x, y)=> x + y, "");
 //concat(["hi ", "there ", "jimmy"]);
 
+
 //implement tl
+var tl = function(list) {
+    var [h, ...t] = list;
+    return t;
+};
 
 //implement hd
+var hd = function(list) {
+    var [h, ...t] = list;
+    return h;
+};
 
 //implement nth
+
+var nth = function(n, list) {
+    
+    function aux(n, list, acc) {
+	if(list.length == 0 ) { throw new Error("List has less than n") }
+	var [h, ...t] = list;
+	if ( acc == n) { return h; }
+	else { return aux(n, t, acc + 1); }
+    };
+    return aux(n, list, 0);
+};
+
+    
 
 //implement rev
 
