@@ -120,9 +120,27 @@ var reduce = function (comb, acc, list) {
 //var concat = reduce ((x, y)=> x + y, "");
 //concat(["hi ", "there ", "jimmy"]);
 
+//implement tl
 
+//implement hd
 
+//implement nth
 
+//implement rev
+
+//implement length
+
+//implement flatten
+
+//implement append
+
+//implement reduce_right
+
+//implement find
+
+//implement find_all
+
+//implement merge
 
 
 
