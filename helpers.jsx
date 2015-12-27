@@ -1,6 +1,6 @@
 //To do: undestructive unshift
 
-var map = function (items, transform) {
+var map = function (transform, items) {
 
     var acc = [];
     if ( items.length == 0) { return [] ;}
@@ -22,7 +22,7 @@ var map = function (items, transform) {
 };
 // map ([1,2,3], x => x + 1);
 
-var filter = function (list, pred) {
+var filter = function (pred, list) {
     var acc = [];
     if ( list.length == 0) { return []; }
 
@@ -43,3 +43,33 @@ var filter = function (list, pred) {
     return aux (list, pred, acc);
 };
 // filter([1,2,3,4,6], x => ( x % 2 == 0));	    
+
+
+var reduce = function (comb, acc, list) {
+    if ( list.length == 0 ) {return acc; }
+    else {	
+	var [h, ...t] = list;
+	return reduce (comb , comb(acc,h), t );		      
+    }
+};
+// reduce ((x, y) => x + y, 0, [1,2,3]);;
+
+//var sum = reduce ((x, y) => x + y, 0);
+
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+    
