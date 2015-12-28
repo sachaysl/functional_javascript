@@ -145,6 +145,7 @@ var nth = function(n, list) {
     };
     return aux(n, list, 0);
 };
+//var 5th = function(list) { return nth(5,list); };
 
 var length = function(list) {
 
@@ -160,13 +161,22 @@ var length = function(list) {
     return aux(list, 0);
 };
 
- 
-
-
-
 //implement rev
+var rev = function(list) {
 
-//implement length
+    function aux(list, acc) {
+	if(typeof list[0] == "undefined") {return acc; }
+
+	else {
+	    var [h, ...t] = list;
+	    acc.unshift(h);
+	    return aux(t, acc);
+	}
+    }
+
+    return aux(list, []);
+};
+
 
 //implement flatten
 
