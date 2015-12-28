@@ -190,8 +190,19 @@ var flatten = function(listOfLists) {
     return aux(listOfLists, []);
 };
 
-    
 //implement append
+var append = function(list1, list2) {
+
+    var aux = function(list1,list2, acc) {
+	if (typeof list1[0] == "undefined") { return acc.concat(list2); }
+	else {
+	    var [h, ...t] = list1;
+	    return aux(t, list2, acc.concat(h));
+	}
+    };
+
+    return aux(list1,list2, []);
+};
 
 //implement reduce_right
 
