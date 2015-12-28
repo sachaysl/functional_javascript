@@ -177,9 +177,20 @@ var rev = function(list) {
     return aux(list, []);
 };
 
-
 //implement flatten
+var flatten = function(listOfLists) {
+    function aux(listOfLists, acc) {
+	if(typeof listOfLists[0] == "undefined") {return acc; }
+	else {
+	    var [h, ...t] = listOfLists;
+	    return aux(t, acc.concat(h));
+	};
+    };
 
+    return aux(listOfLists, []);
+};
+
+    
 //implement append
 
 //implement reduce_right
