@@ -206,30 +206,57 @@ var append = function(list1, list2) {
 
 //implement find
 var find = function(pred,list) {
+    if (typeof list == "undefined") { //partial
+	return function(list) {
+	         if(list.length == 0 ) {throw new Error("No such item exists in this list"); }
+		   var [h, ...t] = list;
+		   if (pred(h)) { return h; }
+		   else {
+		     return find(pred, t);
+		   }
+	};
+    };
+    // full   
     if(list.length == 0 ) {throw new Error("No such item exists in this list"); }
     var [h, ...t] = list;
     if (pred(h)) { return h; }
     else {
 	return find(pred, t);
-    }
+    };
 };
 //find (x => (x%2 == 0), [1,3,5,7,8,9]);
-	
-    
-    
-    
-    
-
-
-
-
-};
-
-//implement merge
+//var find_first_even = find (x => (x%2 == 0));
+//find_first_even([1,3,5,7,9,3,4]);
 
 //implement find_all
+var find_all = function(pred,list) {
+    
+    var aux = function(pred, list, acc) {
+	if (typeof list == "undefined") { //partial
+	    return function(list) {
+                if(list.length == 0 ) {return acc; }
+		       var [h, ...t] = list;
+		       if (pred(h)) { return aux(pred, t, acc.concat(h)); }
+		       else {
+			   return aux(pred, t, acc);
+		       };
+	    };
+	};
+
+	if(list.length == 0 ) {return acc; }
+	var [h, ...t] = list;
+	if (pred(h)) { return aux(pred, t, acc.concat(h)); }
+	else {
+	    return aux(pred, t, acc);
+	};
+    };
+    return aux(pred, list, []) ;
+};
+//var find_all_evens = find_all (x => (x%2 == 0));
+//find_all (x => (x%2 == 0), [1,2,5,4,6,8]);
 
 
+//implement merge
 
 //implement reduce_right
 
