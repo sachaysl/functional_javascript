@@ -204,14 +204,34 @@ var append = function(list1, list2) {
     return aux(list1,list2, []);
 };
 
-//implement reduce_right
-
 //implement find
+var find = function(pred,list) {
+    if(list.length == 0 ) {throw new Error("No such item exists in this list"); }
+    var [h, ...t] = list;
+    if (pred(h)) { return h; }
+    else {
+	return find(pred, t);
+    }
+};
+//find (x => (x%2 == 0), [1,3,5,7,8,9]);
+	
+    
+    
+    
+    
 
-//implement find_all
+
+
+
+};
 
 //implement merge
 
+//implement find_all
+
+
+
+//implement reduce_right
 
 
     
